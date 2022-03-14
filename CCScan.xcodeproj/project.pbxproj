@@ -11,6 +11,7 @@
 		4D8664A827DF55E800083F3C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D8664A727DF55E800083F3C /* ContentView.swift */; };
 		4D8664AA27DF55E800083F3C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4D8664A927DF55E800083F3C /* Assets.xcassets */; };
 		4D8664AD27DF55E800083F3C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4D8664AC27DF55E800083F3C /* Preview Assets.xcassets */; };
+		B2346789327C8926964D764A /* CCScannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2346C3F294A98972B4BD5CD /* CCScannerView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +20,7 @@
 		4D8664A727DF55E800083F3C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		4D8664A927DF55E800083F3C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4D8664AC27DF55E800083F3C /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		B2346C3F294A98972B4BD5CD /* CCScannerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCScannerView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +57,7 @@
 				4D8664A727DF55E800083F3C /* ContentView.swift */,
 				4D8664A927DF55E800083F3C /* Assets.xcassets */,
 				4D8664AB27DF55E800083F3C /* Preview Content */,
+				B2346C3F294A98972B4BD5CD /* CCScannerView.swift */,
 			);
 			path = CCScan;
 			sourceTree = "<group>";
@@ -139,6 +142,7 @@
 			files = (
 				4D8664A827DF55E800083F3C /* ContentView.swift in Sources */,
 				4D8664A627DF55E800083F3C /* CCScanApp.swift in Sources */,
+				B2346789327C8926964D764A /* CCScannerView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -272,6 +276,7 @@
 				DEVELOPMENT_TEAM = CN85LGE7P6;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Please give permission to scan credit cards.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -301,6 +306,7 @@
 				DEVELOPMENT_TEAM = CN85LGE7P6;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Please give permission to scan credit cards.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
