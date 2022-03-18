@@ -7,20 +7,28 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4D7265A527E11538000B719E /* CGRect+transform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D7265A427E11538000B719E /* CGRect+transform.swift */; };
+		4D7265AA27E11BBC000B719E /* CGRect+orientation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D7265A927E11BBC000B719E /* CGRect+orientation.swift */; };
+		4D7265AE27E12884000B719E /* AnimationTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D7265AD27E12884000B719E /* AnimationTest.swift */; };
 		4D8664A627DF55E800083F3C /* CCScanApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D8664A527DF55E800083F3C /* CCScanApp.swift */; };
 		4D8664A827DF55E800083F3C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D8664A727DF55E800083F3C /* ContentView.swift */; };
 		4D8664AA27DF55E800083F3C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4D8664A927DF55E800083F3C /* Assets.xcassets */; };
 		4D8664AD27DF55E800083F3C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4D8664AC27DF55E800083F3C /* Preview Assets.xcassets */; };
-		B2346789327C8926964D764A /* CCScannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2346C3F294A98972B4BD5CD /* CCScannerView.swift */; };
+		4DEABA0E27DF6BDF0092A940 /* CCDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DEABA0D27DF6BDF0092A940 /* CCDetector.swift */; };
+		B2346789327C8926964D764A /* CCScannerCameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2346C3F294A98972B4BD5CD /* CCScannerCameraView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4D7265A427E11538000B719E /* CGRect+transform.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGRect+transform.swift"; sourceTree = "<group>"; };
+		4D7265A927E11BBC000B719E /* CGRect+orientation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGRect+orientation.swift"; sourceTree = "<group>"; };
+		4D7265AD27E12884000B719E /* AnimationTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationTest.swift; sourceTree = "<group>"; };
 		4D8664A227DF55E800083F3C /* CCScan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CCScan.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4D8664A527DF55E800083F3C /* CCScanApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CCScanApp.swift; sourceTree = "<group>"; };
 		4D8664A727DF55E800083F3C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		4D8664A927DF55E800083F3C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4D8664AC27DF55E800083F3C /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		B2346C3F294A98972B4BD5CD /* CCScannerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCScannerView.swift; sourceTree = "<group>"; };
+		4DEABA0D27DF6BDF0092A940 /* CCDetector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CCDetector.swift; sourceTree = "<group>"; };
+		B2346C3F294A98972B4BD5CD /* CCScannerCameraView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCScannerCameraView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -34,6 +42,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4D7265A627E11787000B719E /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				4D7265A427E11538000B719E /* CGRect+transform.swift */,
+				4D7265A927E11BBC000B719E /* CGRect+orientation.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
 		4D86649927DF55E800083F3C = {
 			isa = PBXGroup;
 			children = (
@@ -53,11 +70,14 @@
 		4D8664A427DF55E800083F3C /* CCScan */ = {
 			isa = PBXGroup;
 			children = (
+				4D7265A627E11787000B719E /* Extension */,
 				4D8664A527DF55E800083F3C /* CCScanApp.swift */,
+				4DEABA0D27DF6BDF0092A940 /* CCDetector.swift */,
+				B2346C3F294A98972B4BD5CD /* CCScannerCameraView.swift */,
 				4D8664A727DF55E800083F3C /* ContentView.swift */,
 				4D8664A927DF55E800083F3C /* Assets.xcassets */,
 				4D8664AB27DF55E800083F3C /* Preview Content */,
-				B2346C3F294A98972B4BD5CD /* CCScannerView.swift */,
+				4D7265AD27E12884000B719E /* AnimationTest.swift */,
 			);
 			path = CCScan;
 			sourceTree = "<group>";
@@ -141,8 +161,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				4D8664A827DF55E800083F3C /* ContentView.swift in Sources */,
+				4D7265AE27E12884000B719E /* AnimationTest.swift in Sources */,
 				4D8664A627DF55E800083F3C /* CCScanApp.swift in Sources */,
-				B2346789327C8926964D764A /* CCScannerView.swift in Sources */,
+				4D7265AA27E11BBC000B719E /* CGRect+orientation.swift in Sources */,
+				4D7265A527E11538000B719E /* CGRect+transform.swift in Sources */,
+				B2346789327C8926964D764A /* CCScannerCameraView.swift in Sources */,
+				4DEABA0E27DF6BDF0092A940 /* CCDetector.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -270,6 +294,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"CCScan/Preview Content\"";
@@ -289,6 +314,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.egehan.CCScan;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -300,6 +326,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"CCScan/Preview Content\"";
@@ -319,6 +346,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.egehan.CCScan;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
