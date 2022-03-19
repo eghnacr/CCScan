@@ -27,7 +27,6 @@ final class CCScannerCameraView: UIViewController {
     var detector: CCDetector?
     var output: ((CCDetectResult) -> Void)?
     var delegate: CCScannerCameraViewDelegate?
-    
 
     override func loadView() {
         super.loadView()
@@ -52,8 +51,14 @@ final class CCScannerCameraView: UIViewController {
     }
 
     private func addCameraInput() {
-        let device = AVCaptureDevice.default(.builtInWideAngleCamera, for: .video, position: .back)!
-        let cameraInput = try! AVCaptureDeviceInput(device: device)
+        guard
+            let device = AVCaptureDevice.default(.builtInWideAngleCamera, for: .video, position: .back),
+            let cameraInput = try? AVCaptureDeviceInput(device: device)
+        else {
+            self.delegate?.didError(with: .cameraCouldNotLoad)
+            return
+        }
+
         self.captureSession.sessionPreset = device.supportsSessionPreset(.hd4K3840x2160) ? .hd4K3840x2160 : .hd1920x1080
         try? device.lockForConfiguration()
         if device.isAutoFocusRangeRestrictionSupported {
@@ -101,21 +106,22 @@ final class CCScannerCameraView: UIViewController {
 
 extension CCScannerCameraView: AVCaptureVideoDataOutputSampleBufferDelegate {
     public func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
-        guard
-            let pixelBuffer = CMSampleBufferGetImageBuffer(sampleBuffer),
-            let detectedRectangle = detector?.detect(on: pixelBuffer)
-        else {
+        guard let pixelBuffer = CMSampleBufferGetImageBuffer(sampleBuffer) else {
             self.delegate?.didError(with: .cameraCouldNotLoad)
             return
         }
         
+        guard let detectedRectangle = detector?.detect(on: pixelBuffer) else {
+            self.delegate?.didDetected(result: .none)
+            return
+        }
+
         let transformedRect = detectedRectangle.boundingBox.transformToUIKitRect(with: self.previewLayer.bounds)
         if transformedRect.orientation == .vertical {
             self.delegate?.didDetected(result: .vertical(transformedRect))
         } else {
             self.delegate?.didDetected(result: .horizontal(transformedRect))
         }
-        
     }
 }
 

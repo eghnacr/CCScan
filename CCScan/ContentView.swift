@@ -28,7 +28,8 @@ struct ContentView: View {
                                  orientation: $viewModel.cardOrientation)
                 }
             }.compositingGroup()
-            DetectedRectangle(frame: $viewModel.detectedFrame)
+            DetectedRectangle(frame: $viewModel.detectedFrame,
+                              isVisible: $viewModel.isDetectedFrameVisible)
 
         }.ignoresSafeArea()
     }
@@ -53,25 +54,31 @@ struct ContentView_Previews: PreviewProvider {
 
 extension ContentView {
     final class ViewModel: ObservableObject, CCScannerCameraViewDelegate {
-        @Published var ccFrame: CGRect = .zero
         @Published var strokeColor: Color = .red
         @Published var detectedFrame: CGRect = .zero
         @Published var cardOrientation: Orientation = .vertical
+        @Published var isDetectedFrameVisible: Bool = false
 
         func didDetected(result: CCDetectResult) {
             DispatchQueue.main.async { [weak self] in
-                withAnimation(.linear) {
+                withAnimation(.easeInOut(duration: 0.2)) {
                     switch result {
                     case .vertical(let cgRect):
-                        self?.detectedFrame = cgRect
                         self?.cardOrientation = .vertical
-                    case .horizontal(let cgRect):
                         self?.detectedFrame = cgRect
+                        self?.strokeColor = .green
+                        self?.isDetectedFrameVisible = true
+                    case .horizontal(let cgRect):
                         self?.cardOrientation = .horizontal
+                        self?.detectedFrame = cgRect
+                        self?.strokeColor = .green
+                        self?.isDetectedFrameVisible = true
                     case .none:
-                        self?.detectedFrame = .zero
+                        self?.strokeColor = .red
+                        self?.isDetectedFrameVisible = false
                     }
                 }
+                
             }
         }
 
@@ -84,17 +91,6 @@ struct InterestArea: View {
     @Binding var orientation: Orientation
 
     let cornerRadius: CGFloat = 10
-//    var body: some View {
-//        Rectangle()
-//            .frame(width: frame.width, height: frame.height)
-//            .cornerRadius(cornerRadius)
-//            .blendMode(.destinationOut)
-//            .overlay(
-//                RoundedRectangle(cornerRadius: cornerRadius)
-//                    .stroke(strokeColor, lineWidth: 3)
-//            )
-//            .position(x: frame.origin.x, y: frame.origin.y)
-//    }
 
     var body: some View {
         GeometryReader { proxy in
@@ -105,6 +101,7 @@ struct InterestArea: View {
             let height = ccHeight * (width / ccWidth)
             let x = proxy.size.width / 2
             let y = (height / 2) + (proxy.size.height * 0.05)
+
             Rectangle()
                 .frame(width: width, height: height)
                 .cornerRadius(cornerRadius)
@@ -120,11 +117,13 @@ struct InterestArea: View {
 
 struct DetectedRectangle: View {
     @Binding var frame: CGRect
+    @Binding var isVisible: Bool
 
     var body: some View {
         RoundedRectangle(cornerRadius: 10)
             .stroke(.yellow, lineWidth: 2)
             .frame(width: frame.width, height: frame.height)
             .position(x: frame.midX, y: frame.midY)
+            .opacity(isVisible ? 1 : 0)
     }
 }

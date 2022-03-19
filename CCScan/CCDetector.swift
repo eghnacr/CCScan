@@ -56,7 +56,6 @@ final class CCDetector {
                 let texts = textRectangleRequest.results?.first,
                 rect.boundingBox.contains(texts.boundingBox)
             {
-                print(rect)
                 return rect
             }
         
@@ -73,10 +72,10 @@ final class CCDetector {
     private static func createRectangleRequest() -> VNDetectRectanglesRequest {
         let request = VNDetectRectanglesRequest()
         let aspectRatio = CCDimension.vertical.aspectRatio // Doesn't matter if it's horizontal or vertical
-        request.maximumObservations = 5
+        //request.maximumObservations = 5
         request.minimumConfidence = 0.59
-        request.minimumAspectRatio = aspectRatio * 0.9
-        request.maximumAspectRatio = aspectRatio * 1.1
+        //request.minimumAspectRatio = aspectRatio * 0.9
+        //request.maximumAspectRatio = aspectRatio * 1.1
         return request
     }
 }
