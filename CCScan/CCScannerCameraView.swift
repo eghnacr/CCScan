@@ -6,30 +6,28 @@ import AVFoundation
 import SwiftUI
 import UIKit
 
-enum CCScannerError: Error {
-    case cameraCouldNotLoad
-}
-
-protocol CCScannerCameraViewDelegate {
-    func didDetected(result: CCDetectResult)
-    func didError(with: CCScannerError)
-}
-
 final class CCScannerCameraView: UIViewController {
     private let captureSession = AVCaptureSession()
     private lazy var previewLayer: AVCaptureVideoPreviewLayer = {
         let previewLayer = AVCaptureVideoPreviewLayer(session: self.captureSession)
         previewLayer.videoGravity = .resizeAspectFill
+        previewLayer.connection?.videoOrientation = .currentDeviceOrientation
         return previewLayer
     }()
 
     private var captureOutput = AVCaptureVideoDataOutput()
-    var detector: CCDetector?
-    var output: ((CCDetectResult) -> Void)?
-    var delegate: CCScannerCameraViewDelegate?
+    var sampleBufferDelegate: AVCaptureVideoDataOutputSampleBufferDelegate?
 
     override func loadView() {
         super.loadView()
+    }
+    
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        for output in captureSession.outputs {
+            captureSession.removeOutput(output)
+        }
+        previewLayer.connection?.videoOrientation = .currentDeviceOrientation
+        addVideoOutput()
     }
 
     override func viewDidLayoutSubviews() {
@@ -39,9 +37,15 @@ final class CCScannerCameraView: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    func startCapturing() {
         self.setupCaptureSession()
         self.captureSession.startRunning()
-        self.detector = CCDetector(in: self.view.bounds)
+    }
+    
+    func stopCapturing() {
+        self.captureSession.stopRunning()
     }
 
     private func setupCaptureSession() {
@@ -55,7 +59,6 @@ final class CCScannerCameraView: UIViewController {
             let device = AVCaptureDevice.default(.builtInWideAngleCamera, for: .video, position: .back),
             let cameraInput = try? AVCaptureDeviceInput(device: device)
         else {
-            self.delegate?.didError(with: .cameraCouldNotLoad)
             return
         }
 
@@ -89,39 +92,23 @@ final class CCScannerCameraView: UIViewController {
     }
 
     private func addVideoOutput() {
+        guard let sampleBufferDelegate = sampleBufferDelegate else {
+            return
+        }
+
         self.captureOutput.videoSettings = [
             kCVPixelBufferPixelFormatTypeKey as String: kCVPixelFormatType_420YpCbCr8BiPlanarFullRange
         ]
 
-        self.captureOutput.setSampleBufferDelegate(self, queue: DispatchQueue(label: "com.egehan.ccscanner.queue", qos: .userInteractive))
+        self.captureOutput.setSampleBufferDelegate(sampleBufferDelegate, queue: DispatchQueue(label: "com.egehan.ccscanner.queue", qos: .userInteractive))
         self.captureSession.addOutput(self.captureOutput)
         guard let connection = self.captureOutput.connection(with: AVMediaType.video),
               connection.isVideoOrientationSupported
         else {
             return
         }
-        connection.videoOrientation = .portrait
-    }
-}
-
-extension CCScannerCameraView: AVCaptureVideoDataOutputSampleBufferDelegate {
-    public func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
-        guard let pixelBuffer = CMSampleBufferGetImageBuffer(sampleBuffer) else {
-            self.delegate?.didError(with: .cameraCouldNotLoad)
-            return
-        }
-        
-        guard let detectedRectangle = detector?.detect(on: pixelBuffer) else {
-            self.delegate?.didDetected(result: .none)
-            return
-        }
-
-        let transformedRect = detectedRectangle.boundingBox.transformToUIKitRect(with: self.previewLayer.bounds)
-        if transformedRect.orientation == .vertical {
-            self.delegate?.didDetected(result: .vertical(transformedRect))
-        } else {
-            self.delegate?.didDetected(result: .horizontal(transformedRect))
-        }
+  
+        connection.videoOrientation = .currentDeviceOrientation
     }
 }
 
