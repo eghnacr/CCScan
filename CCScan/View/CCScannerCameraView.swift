@@ -71,7 +71,7 @@ final class CCScannerCameraView: UIViewController {
             device.focusMode = .continuousAutoFocus
         }
         if device.isFocusPointOfInterestSupported {
-            // device.focusPointOfInterest = CGPoint(x: 0.5, y: 0.5)
+            device.focusPointOfInterest = CGPoint(x: 0.5, y: 0.5)
         }
         if device.isExposureModeSupported(.continuousAutoExposure) {
             device.exposureMode = .continuousAutoExposure

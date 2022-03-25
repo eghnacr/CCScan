@@ -6,6 +6,7 @@
 //
 
 import Vision
+import AVFoundation
 
 enum CCDimension {
     case vertical
@@ -31,8 +32,7 @@ enum CCDimension {
 }
 
 enum CCDetectResult {
-    case vertical(CGRect)
-    case horizontal(CGRect)
+    case detected(CGRect, CVImageBuffer)
     case none
 }
 
@@ -41,7 +41,7 @@ final class CCDetector {
     private let textRectangleRequest: VNDetectTextRectanglesRequest // to check if the rectangle contains text
     private let handler: VNSequenceRequestHandler
 
-    init(in layer: CGRect) {
+    init() {
         rectangleRequest = Self.createRectangleRequest()
         textRectangleRequest = VNDetectTextRectanglesRequest()
         handler = VNSequenceRequestHandler()

@@ -8,13 +8,14 @@
 import CoreGraphics
 
 extension CGRect {
-    func transformToUIKitRect(with rect: CGRect) -> CGRect {
-        let transform = CGAffineTransform(scaleX: 1, y: -1)
-            .translatedBy(x: 0, y: -rect.height)
-        let scale = CGAffineTransform
-            .identity
-            .scaledBy(x: rect.width, y: rect.height)
-
-        return self.applying(scale).applying(transform)
+    func transformToUIKitRect(with size: CGSize) -> CGRect {
+        let x = (size.width * self.origin.x)
+        let y = (size.height * (1 - self.origin.y  - self.height))
+        let width = size.width * self.width
+        let height = size.height * self.height
+        return CGRect(x: x,
+                      y: y,
+                      width: width,
+                      height: height)
     }
 }

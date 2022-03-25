@@ -7,27 +7,38 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4D0B982827E9DE1200EC5F6D /* AVCaptureVideoOrientation+currentDeviceOrientation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D0B982727E9DE1200EC5F6D /* AVCaptureVideoOrientation+currentDeviceOrientation.swift */; };
+		4D0B982A27E9E07500EC5F6D /* CCScannerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D0B982927E9E07500EC5F6D /* CCScannerViewModel.swift */; };
+		4D538DB927ECBB20007FB7D3 /* CCScannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D538DB827ECBB20007FB7D3 /* CCScannerView.swift */; };
 		4D7265A527E11538000B719E /* CGRect+transform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D7265A427E11538000B719E /* CGRect+transform.swift */; };
 		4D7265AA27E11BBC000B719E /* CGRect+orientation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D7265A927E11BBC000B719E /* CGRect+orientation.swift */; };
-		4D7265AE27E12884000B719E /* AnimationTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D7265AD27E12884000B719E /* AnimationTest.swift */; };
 		4D8664A627DF55E800083F3C /* CCScanApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D8664A527DF55E800083F3C /* CCScanApp.swift */; };
-		4D8664A827DF55E800083F3C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D8664A727DF55E800083F3C /* ContentView.swift */; };
 		4D8664AA27DF55E800083F3C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4D8664A927DF55E800083F3C /* Assets.xcassets */; };
 		4D8664AD27DF55E800083F3C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4D8664AC27DF55E800083F3C /* Preview Assets.xcassets */; };
+		4DBD6A6C27EB519D000AE5D8 /* CCReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DBD6A6B27EB519D000AE5D8 /* CCReader.swift */; };
+		4DBD6A6E27EB5388000AE5D8 /* OCR.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DBD6A6D27EB5388000AE5D8 /* OCR.swift */; };
+		4DBD6A7227EBB1C6000AE5D8 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DBD6A7127EBB1C6000AE5D8 /* MainView.swift */; };
 		4DEABA0E27DF6BDF0092A940 /* CCDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DEABA0D27DF6BDF0092A940 /* CCDetector.swift */; };
+		4DF6F18427EC96DF0066E436 /* Array+mostRepetitive.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DF6F18327EC96DF0066E436 /* Array+mostRepetitive.swift */; };
 		B2346789327C8926964D764A /* CCScannerCameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2346C3F294A98972B4BD5CD /* CCScannerCameraView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4D0B982727E9DE1200EC5F6D /* AVCaptureVideoOrientation+currentDeviceOrientation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AVCaptureVideoOrientation+currentDeviceOrientation.swift"; sourceTree = "<group>"; };
+		4D0B982927E9E07500EC5F6D /* CCScannerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CCScannerViewModel.swift; sourceTree = "<group>"; };
+		4D538DB827ECBB20007FB7D3 /* CCScannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CCScannerView.swift; sourceTree = "<group>"; };
 		4D7265A427E11538000B719E /* CGRect+transform.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGRect+transform.swift"; sourceTree = "<group>"; };
 		4D7265A927E11BBC000B719E /* CGRect+orientation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGRect+orientation.swift"; sourceTree = "<group>"; };
-		4D7265AD27E12884000B719E /* AnimationTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimationTest.swift; sourceTree = "<group>"; };
 		4D8664A227DF55E800083F3C /* CCScan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CCScan.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4D8664A527DF55E800083F3C /* CCScanApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CCScanApp.swift; sourceTree = "<group>"; };
-		4D8664A727DF55E800083F3C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		4D8664A927DF55E800083F3C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4D8664AC27DF55E800083F3C /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		4DBD6A6B27EB519D000AE5D8 /* CCReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CCReader.swift; sourceTree = "<group>"; };
+		4DBD6A6D27EB5388000AE5D8 /* OCR.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OCR.swift; sourceTree = "<group>"; };
+		4DBD6A7127EBB1C6000AE5D8 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		4DD31CFA27EB2E7B0060C889 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		4DEABA0D27DF6BDF0092A940 /* CCDetector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CCDetector.swift; sourceTree = "<group>"; };
+		4DF6F18327EC96DF0066E436 /* Array+mostRepetitive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+mostRepetitive.swift"; sourceTree = "<group>"; };
 		B2346C3F294A98972B4BD5CD /* CCScannerCameraView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCScannerCameraView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -42,11 +53,38 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4D60D42B27EA597D00F43DD8 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				B2346C3F294A98972B4BD5CD /* CCScannerCameraView.swift */,
+				4DBD6A7127EBB1C6000AE5D8 /* MainView.swift */,
+				4D538DB827ECBB20007FB7D3 /* CCScannerView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		4D60D42C27EA598200F43DD8 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				4D0B982927E9E07500EC5F6D /* CCScannerViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		4D60D42D27EA598900F43DD8 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		4D7265A627E11787000B719E /* Extension */ = {
 			isa = PBXGroup;
 			children = (
 				4D7265A427E11538000B719E /* CGRect+transform.swift */,
 				4D7265A927E11BBC000B719E /* CGRect+orientation.swift */,
+				4D0B982727E9DE1200EC5F6D /* AVCaptureVideoOrientation+currentDeviceOrientation.swift */,
+				4DF6F18327EC96DF0066E436 /* Array+mostRepetitive.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -70,14 +108,17 @@
 		4D8664A427DF55E800083F3C /* CCScan */ = {
 			isa = PBXGroup;
 			children = (
+				4DD31CFA27EB2E7B0060C889 /* Info.plist */,
+				4D60D42D27EA598900F43DD8 /* Model */,
+				4D60D42C27EA598200F43DD8 /* ViewModel */,
+				4D60D42B27EA597D00F43DD8 /* View */,
 				4D7265A627E11787000B719E /* Extension */,
 				4D8664A527DF55E800083F3C /* CCScanApp.swift */,
 				4DEABA0D27DF6BDF0092A940 /* CCDetector.swift */,
-				B2346C3F294A98972B4BD5CD /* CCScannerCameraView.swift */,
-				4D8664A727DF55E800083F3C /* ContentView.swift */,
+				4DBD6A6B27EB519D000AE5D8 /* CCReader.swift */,
+				4DBD6A6D27EB5388000AE5D8 /* OCR.swift */,
 				4D8664A927DF55E800083F3C /* Assets.xcassets */,
 				4D8664AB27DF55E800083F3C /* Preview Content */,
-				4D7265AD27E12884000B719E /* AnimationTest.swift */,
 			);
 			path = CCScan;
 			sourceTree = "<group>";
@@ -160,13 +201,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4D8664A827DF55E800083F3C /* ContentView.swift in Sources */,
-				4D7265AE27E12884000B719E /* AnimationTest.swift in Sources */,
+				4D0B982A27E9E07500EC5F6D /* CCScannerViewModel.swift in Sources */,
 				4D8664A627DF55E800083F3C /* CCScanApp.swift in Sources */,
+				4DBD6A6C27EB519D000AE5D8 /* CCReader.swift in Sources */,
+				4DBD6A6E27EB5388000AE5D8 /* OCR.swift in Sources */,
 				4D7265AA27E11BBC000B719E /* CGRect+orientation.swift in Sources */,
+				4D0B982827E9DE1200EC5F6D /* AVCaptureVideoOrientation+currentDeviceOrientation.swift in Sources */,
+				4DF6F18427EC96DF0066E436 /* Array+mostRepetitive.swift in Sources */,
+				4DBD6A7227EBB1C6000AE5D8 /* MainView.swift in Sources */,
 				4D7265A527E11538000B719E /* CGRect+transform.swift in Sources */,
 				B2346789327C8926964D764A /* CCScannerCameraView.swift in Sources */,
 				4DEABA0E27DF6BDF0092A940 /* CCDetector.swift in Sources */,
+				4D538DB927ECBB20007FB7D3 /* CCScannerView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -301,7 +347,10 @@
 				DEVELOPMENT_TEAM = CN85LGE7P6;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = CCScan/Info.plist;
 				INFOPLIST_KEY_NSCameraUsageDescription = "Please give permission to scan credit cards.";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "to add";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "to save";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -333,7 +382,10 @@
 				DEVELOPMENT_TEAM = CN85LGE7P6;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = CCScan/Info.plist;
 				INFOPLIST_KEY_NSCameraUsageDescription = "Please give permission to scan credit cards.";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "to add";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "to save";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
