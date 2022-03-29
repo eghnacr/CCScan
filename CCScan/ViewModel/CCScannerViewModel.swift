@@ -113,10 +113,6 @@ final class CCScannerViewModel: NSObject, ObservableObject {
         }
     }
 
-    func didTappedDone() {
-        print("didTappedDone")
-    }
-
     func didTappedCreditCardText() {
         if let cardNo = self.ccResult?.cardNo {
             self.ccResult = self.ccReader.addCardNumberToStopWords(cardNo)

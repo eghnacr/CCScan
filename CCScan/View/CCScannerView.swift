@@ -8,13 +8,16 @@
 import SwiftUI
 
 struct CCScannerView: View {
+    @Environment(\.dismiss) var dismiss
     @StateObject var viewModel: CCScannerViewModel
 
     let cameraView: CCScannerCameraView
+    let completionHandler: (CCResult) -> Void
 
-    init(viewModel: CCScannerViewModel = .init()) {
+    init(viewModel: CCScannerViewModel = .init(), _ completionHandler: @escaping (CCResult) -> Void) {
         _viewModel = StateObject(wrappedValue: viewModel)
         self.cameraView = CCScannerCameraView()
+        self.completionHandler = completionHandler
     }
 
     var body: some View {
@@ -40,7 +43,8 @@ struct CCScannerView: View {
                     VStack {
                         interestArea
                         Spacer()
-                        todo
+                        infoScreen
+                        doneButton
                     }
                 }
                 .compositingGroup()
@@ -50,9 +54,9 @@ struct CCScannerView: View {
         .ignoresSafeArea()
     }
 
-    // MARK: TODO:
+    // MARK: Info Screen
 
-    private var todo: some View {
+    private var infoScreen: some View {
         VStack {
             Text("Lütfen kredi kartını yukarıdaki alana ortalayın.")
                 .foregroundColor(.white)
@@ -86,28 +90,29 @@ struct CCScannerView: View {
                         viewModel.didTappedExpirationDateText()
                     }
             }
-            doneButton
-                .onTapGesture {
-                    viewModel.didTappedDone()
-                }
         }
         .frame(maxWidth: 400)
+        .padding([.leading, .trailing])
         .offset(x: 0, y: -20)
-        .padding()
     }
 
     private var doneButton: some View {
         Button {
-            viewModel.didTappedDone()
+            if let ccResult = self.viewModel.ccResult {
+                self.completionHandler(ccResult)
+            }
+            self.dismiss()
         } label: {
-
             Image(systemName: "checkmark")
                 .foregroundColor(.white)
                 .font(.title)
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
         }
         .frame(width: 300, height: 50)
         .background(.red)
         .cornerRadius(10)
+        .padding([.leading, .trailing, .bottom])
+        .offset(x: 0, y: -20)
     }
 
     // MARK: Interest Area
@@ -183,11 +188,11 @@ struct CCScannerView: View {
 
 struct CCScannerView_Previews: PreviewProvider {
     static var previews: some View {
-        CCScannerView()
+        CCScannerView { _ in }
             .previewDevice("iPhone 12 mini")
 
         if true {
-            CCScannerView()
+            CCScannerView { _ in }
                 .previewInterfaceOrientation(.landscapeRight)
                 .previewDevice("iPad Pro (9.7-inch)")
         }

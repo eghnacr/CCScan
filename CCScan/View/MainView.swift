@@ -8,15 +8,17 @@
 import SwiftUI
 
 struct MainView: View {
-    
     @State
     var isPresented = false
-    
+
     var body: some View {
         Button("Scan") {
             isPresented = true
-        }.fullScreenCover(isPresented: $isPresented) {
-            CCScannerView()
+        }
+        .fullScreenCover(isPresented: $isPresented) {
+            CCScannerView { result in
+                print(result)
+            }
         }
     }
 }
