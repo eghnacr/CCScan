@@ -16,9 +16,9 @@ final class CCReader {
     private var expirationDatePredictions = [String]()
     private var cardNumberPredictions = [String]()
 
-    private var expirationDateCustomStopWords = [String]()
-    private var nameCustomStopWords = [String]()
-    private var cardNumberCustomStopWords = [String]()
+    private var expirationDateStopWords = [String]()
+    private var nameStopWords = [String]()
+    private var cardNumberStopWords = [String]()
 
     func read(from pixelBuffer: CVPixelBuffer) -> CCResult? {
         let recognizedTexts = ocr.recognizeTexts(on: pixelBuffer)
@@ -27,19 +27,19 @@ final class CCReader {
             .joined(separator: "\n")
 
         if let cardNumber = helper.extractCardNumber(from: recognizedTextsAsString),
-           !cardNumberCustomStopWords.contains(cardNumber)
+           !cardNumberStopWords.contains(cardNumber)
         {
             cardNumberPredictions.append(cardNumber)
         }
 
         if let expirationDate = helper.extractExpirationDate(from: recognizedTextsAsString),
-           !expirationDateCustomStopWords.contains(expirationDate)
+           !expirationDateStopWords.contains(expirationDate)
         {
             expirationDatePredictions.append(expirationDate)
         }
 
         if let name = helper.extractName(from: recognizedTexts),
-           !nameCustomStopWords.contains(name)
+           !nameStopWords.contains(name)
         {
             namePredictions.append(name)
         }
@@ -57,19 +57,19 @@ final class CCReader {
     }
 
     func addCardNumberToStopWords(_ string: String) -> CCResult {
-        cardNumberCustomStopWords.append(string)
+        cardNumberStopWords.append(string)
         cardNumberPredictions.removeAll { $0 == string }
         return getResultFromPredictions()
     }
 
     func addNameToStopWords(_ string: String) -> CCResult {
-        nameCustomStopWords.append(string)
+        nameStopWords.append(string)
         namePredictions.removeAll { $0 == string }
         return getResultFromPredictions()
     }
 
     func addExpirationDateToStopWords(_ string: String) -> CCResult {
-        expirationDateCustomStopWords.append(string)
+        expirationDateStopWords.append(string)
         expirationDatePredictions.removeAll { $0 == string }
         return getResultFromPredictions()
     }
@@ -79,8 +79,6 @@ final class CCReaderHelper {
     private let expirationDateRegex = "\\b(0[1-9]|1[0-2]|[1-9])([/]|[-])(20[2-9][0-9]|[2-9][0-9])\\b"
     private let nameRegex = "^\\b([A-Z]{2,})\\s([A-Z]{2,})((\\s[A-Z]{2,}){0,})\\b$"
     private let cardNumberRegex = "(\\b[4-6]\\d{3}\\s\\d{4}\\s\\d{4}\\s\\d{4}\\b)|(\\b3\\d{3}\\s\\d{6}\\s\\d{5}\\b)"
-    private let stopWords: [String] = [
-    ]
 
     func extractExpirationDate(from text: String) -> String? {
         if let range = text.range(of: expirationDateRegex, options: .regularExpression) {

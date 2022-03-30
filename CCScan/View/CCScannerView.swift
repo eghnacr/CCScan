@@ -11,12 +11,11 @@ struct CCScannerView: View {
     @Environment(\.dismiss) var dismiss
     @StateObject var viewModel: CCScannerViewModel
 
-    let cameraView: CCScannerCameraView
-    let completionHandler: (CCResult) -> Void
+    private let cameraView = CCScannerCameraView()
+    private let completionHandler: (CCResult) -> Void
 
     init(viewModel: CCScannerViewModel = .init(), _ completionHandler: @escaping (CCResult) -> Void) {
         _viewModel = StateObject(wrappedValue: viewModel)
-        self.cameraView = CCScannerCameraView()
         self.completionHandler = completionHandler
     }
 
@@ -48,7 +47,9 @@ struct CCScannerView: View {
                     }
                 }
                 .compositingGroup()
+                #if DEBUG
                 detectedRectangle
+                #endif
             }
         }
         .ignoresSafeArea()
@@ -182,7 +183,6 @@ struct CCScannerView: View {
                    height: viewModel.detectedFrame.height)
             .position(x: viewModel.detectedFrame.midX,
                       y: viewModel.detectedFrame.midY)
-            .opacity(viewModel.isDetectedFrameVisible ? 1 : 0)
     }
 }
 
