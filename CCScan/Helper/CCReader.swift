@@ -77,7 +77,7 @@ final class CCReader {
 
 final class CCReaderHelper {
     private let expirationDateRegex = "\\b(0[1-9]|1[0-2]|[1-9])([/]|[-])(20[2-9][0-9]|[2-9][0-9])\\b"
-    private let nameRegex = "^\\b([A-Z]{2,})\\s([A-Z]{2,})((\\s[A-Z]{2,}){0,})\\b$"
+    private let nameRegex = "^\\b([A-Z]{2,})\\s([A-Z]{1,})((\\s[A-Z]{2,}){0,})\\b$"
     private let cardNumberRegex = "(\\b[4-6]\\d{3}\\s\\d{4}\\s\\d{4}\\s\\d{4}\\b)|(\\b3\\d{3}\\s\\d{6}\\s\\d{5}\\b)"
 
     func extractExpirationDate(from text: String) -> String? {

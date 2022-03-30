@@ -59,11 +59,11 @@ struct CCScannerView: View {
 
     private var infoScreen: some View {
         VStack {
-            Text("Lütfen kredi kartını yukarıdaki alana ortalayın.")
+            Text("Please center your card in the space above.")
                 .foregroundColor(.white)
                 .font(.footnote)
                 .padding(1)
-            Text("Yanlış okunan verileri üzerine dokunarak değiştirebilirsiniz.")
+            Text("You can change the incorrectly read data by tapping on it.")
                 .foregroundColor(.white)
                 .font(.footnote)
                 .multilineTextAlignment(.center)

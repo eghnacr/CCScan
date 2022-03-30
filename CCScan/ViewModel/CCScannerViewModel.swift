@@ -94,6 +94,9 @@ extension CCScannerViewModel: AVCaptureVideoDataOutputSampleBufferDelegate {
             didDetected(result: .none)
             return
         }
+        let w = CVPixelBufferGetWidth(pixelBuffer)
+        let h = CVPixelBufferGetHeight(pixelBuffer)
+        let size = CGSize(width: w, height: h)
 
         let transformedRect = detectedCCRectangle.boundingBox.transformToUIKitRect(with: screenSize)
         didDetected(result: .detected(transformedRect, pixelBuffer))

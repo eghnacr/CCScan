@@ -13,11 +13,13 @@ final class CCDetector {
     private let textRectangleRequest = VNDetectTextRectanglesRequest() // to check if the rectangle contains text
     private let rectangleRequest: VNDetectRectanglesRequest = {
         let request = VNDetectRectanglesRequest()
-        //let aspectRatio = CCDimension.vertical.aspectRatio // Doesn't matter if it's horizontal or vertical
-        //request.minimumAspectRatio = aspectRatio * 0.9
-        //request.maximumAspectRatio = aspectRatio * 1.1
-        //request.maximumObservations = 5
+//        let aspectRatio = CCDimension.vertical.aspectRatio // Doesn't matter if it's horizontal or vertical
+//        request.minimumAspectRatio = aspectRatio * 0.8
+//        request.maximumAspectRatio = aspectRatio * 1.2
+//        request.quadratureTolerance = 20
+        request.maximumObservations = 1
         request.minimumConfidence = 0.6
+        request.minimumSize = 0.1
         return request
     }()
 
